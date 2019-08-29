@@ -1,0 +1,57 @@
+.dash_img {
+    width: 30%;
+}
+
+#result_page {
+	border: 1px solid #ddd;
+	padding: 1% 2% 0 2%;
+	font-size: 12px;
+}
+
+#upload {
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#position {
+	font-size: 16px;
+}
+
+#signature {
+	width: 25%;
+}
+
+.grade {
+	font-size: 14px;
+}
+
+@media print
+{
+.noprint {display:none;}
+}
+
+@media screen
+{
+...
+}
+
+#view_result select {
+    border-radius: 0;
+}
+
+#view_result span {
+    border-radius: 0;
+}
+
+#result_upload select {
+    border-radius: 0;
+}
+
+#result_upload span {
+    border-radius: 0;
+}
+
+.meee2 {
+    /*border: 1px solid #ddd;
+    border-radius: 5px;*/
+}

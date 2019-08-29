@@ -1,0 +1,12 @@
+.slider-background-img{
+	background-image: url(../img/slider-1.jpg);
+	background-repeat: no-repeat;
+	width: auto;
+	padding: 0px;
+	margin: 0px;
+
+}
+
+#get_started{
+	background-color: #000;
+}
