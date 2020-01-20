@@ -1,3 +1,30 @@
+<?php
+    if(isset($_POST['report_sheet_btn'])){
+        $std_reg_number = $_POST['std_reg_number'];
+        $std_class = $_POST['std_class'];
+        $std_term = $_POST['std_term'];
+        $std_session = $_POST['std_session'];
+
+        $query = " SELECT * FROM `results1` WHERE `reg_number` = '{$std_reg_number}' AND `class` = '{$std_class}' AND `term` = '{$std_term}' AND `session` = '{$std_session}' ";
+        $run_query = mysqli_query($connection, $query);
+
+        if($run_query == true){
+            if(mysqli_num_rows($run_query) > 0){
+                session_start();
+                while($result = mysqli_fetch_assoc($run_query)){
+                    $result_id = $result['id'];
+                    $_SESSION['result'] = $result_id;
+                    header("Location: admin_result_page.php");
+                }
+            }else{
+                $msg = "<p class='text-danger'><b>No Result Records Found !!!</b></p>";
+            }
+        }else{
+            $msg = "<p class='text-danger'><b>Result Checking Failed !!!</b></p>";
+        }
+    }
+?>
+
 <div class='page-title'>
   <div>
     <h1><i class='fa fa-laptop'></i> Result Management</h1>
@@ -119,6 +146,7 @@
                                                 <th>TOTAL</th>
                                                 <th>AVERAGE</th>
                                                 <th>POSITION IN CLASS</th>
+                                                <th>ACTION</th>
                                             </tr>
                                         </thead>
                             ";
@@ -144,6 +172,15 @@
                                             <td class='success'>{$student_total}</td>
                                             <td class='danger'>{$student_average}</td>
                                             <td class='info'>{$student_position}</td>
+                                            <td>
+                                                <form action='' method='POST'>
+                                                    <input type='hidden' name='std_reg_number' value='{$reg_number}' />
+                                                    <input type='hidden' name='std_class' value='{$class}' />
+                                                    <input type='hidden' name='std_term' value='{$term}' />
+                                                    <input type='hidden' name='std_session' value='{$session}' />
+                                                    <input type='submit' name='report_sheet_btn' value='Report Sheet' class='btn btn-info btn-sm' />
+                                                </form>
+                                            </td>
 
                                         </tr>
                                     </tbody>

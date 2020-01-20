@@ -85,8 +85,8 @@
   <div class="col-md-3">
     <div class="card p-0">
       <ul class="nav nav-tabs nav-stacked user-tabs">
-        <li class="active"><a href="#user-timeline" data-toggle="tab">Timeline</a></li>
-        <li><a href="#user-settings" data-toggle="tab">Settings</a></li>
+        <li class="active"><a href="#" data-toggle="tab">Timeline</a></li>
+        <li><a href="modules.php?settings">Settings</a></li>
       </ul>
     </div>
   </div>

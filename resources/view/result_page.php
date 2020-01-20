@@ -374,6 +374,8 @@
                                         }
                                         elseif($result_term === "Third Term" && $result_status === "Fail"){
                                             $third_term_promotion = "Repeat";
+                                        }else{
+                                            $third_term_promotion = "";   
                                         }
                                     ?>    
                                     <tr>

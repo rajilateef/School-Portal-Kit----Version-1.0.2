@@ -14,38 +14,65 @@
 
 <div class='card'>
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-6">
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
-                    <h4 class='text-center'>Fathers Numbers</h4>
+                    <h4 class='text-center'>Generate Parent Contacts</h4>
                 </div>
                 <div class='panel-body'>
-                    <?php
-                        $query = " SELECT father_phone FROM students ";
+                    <form method='POST' action=''>
+                        <div class='row'>
+                            <div class='col-md-8'>
+                                <div class='input-group'>
+                                    <span class='input-group-addon' id='basic-addon2'>Student Class:</span>
+                                    <select class='form-control' name='contact_class'>
+                                        <option selected ><?php echo $select; ?></option>
+                                        <option>All</option>
+                                            <?php
+                                                $query = " SELECT * FROM `classes` ";
+                                                $run_query = mysqli_query($connection, $query);
+                                                if(mysqli_num_rows($run_query) > 0){
+                                                    while($result = mysqli_fetch_assoc($run_query)){
+                                                        $attendance = $result['classes'];
+                                                        echo"
+                                                            <option>{$attendance}</option>
+                                                        ";
+                                                    }
+                                                }
+                                            ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class='col-md-2'>
+                                <input type='submit' name='generate_contact_btn' value='SHOW CONTACT' class='btn btn-primary' />
+                            </div>
+
+                        </div>
+                    </form>
+                    <br />
+                </div>
+            </div>
+
+            <?php
+                if(isset($_POST['generate_contact_btn'])){
+                    $contact_class = $_POST['contact_class'];
+
+                    if($contact_class === "All"){
+                        $query = " SELECT mother_phone,father_phone FROM students ";
                         $run_query = mysqli_query($connection, $query);
-                    
+                
                         if(mysqli_num_rows($run_query) > 0){
                             $i = 0;
                             while($result = mysqli_fetch_assoc($run_query)){
                                 $i++;
-                                $fathers_contacts = $result['father_phone'];
+                                $mothers_contacts = $result['mother_phone'];
+                                $father_contacts = $result['father_phone'];
                                 
-                                echo "<p class='text-center'><b>{$fathers_contacts}</b></p>";
+                                echo "{$mothers_contacts}, {$father_contacts}, ";
                             }
-                        }
-                    ?>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-2">
-            <div class='panel panel-primary'>
-                <div class='panel-heading'>
-                    <h4 class='text-center'>Mothers Numbers</h4>
-                </div>
-                <div class='panel-body'>
-                    <?php
-                        $query = " SELECT mother_phone FROM students ";
+                        }                        
+                    }else{
+                        $query = " SELECT mother_phone,father_phone FROM students WHERE class = '$contact_class' ";
                         $run_query = mysqli_query($connection, $query);
                     
                         if(mysqli_num_rows($run_query) > 0){
@@ -53,71 +80,52 @@
                             while($result = mysqli_fetch_assoc($run_query)){
                                 $i++;
                                 $mothers_contacts = $result['mother_phone'];
+                                $father_contacts = $result['father_phone'];
                                 
-                                echo "<p class='text-center'><b>{$mothers_contacts}</b></p>";
+                                echo "{$mothers_contacts}, {$father_contacts}, ";
                             }
                         }
-                    ?>
-                </div>
-            </div>
+                    }
+                }
+            ?>
+
         </div>
-        
-        <div class="col-md-2">
+
+        <div class="col-md-6">
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
-                    <h4 class='text-center'>Sponsors Numbers</h4>
+                    <h4 class='text-center'>Generate Teachers Contacts</h4>
                 </div>
                 <div class='panel-body'>
-                    <?php
-                        $query = " SELECT sponsor_phone FROM students ";
-                        $run_query = mysqli_query($connection, $query);
-                    
-                        if(mysqli_num_rows($run_query) > 0){
-                            $i = 0;
-                            while($result = mysqli_fetch_assoc($run_query)){
-                                $i++;
-                                $sponsors_contacts = $result['sponsor_phone'];
-                                
-                                echo "<p class='text-center'><b>{$sponsors_contacts}</b></p>";
-                            }
-                        }
-                    ?>
+                    <form method='POST' action=''>
+                        <div class='row'>
+                            <div class='col-md-2'>
+                                <input type='submit' name='generate_teachers_contact_btn' value='SHOW CONTACT' class='btn btn-primary' />
+                            </div>
+                        </div>
+                    </form>
+                    <br />
                 </div>
             </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class='panel panel-primary'>
-                <div class='panel-heading'>
-                    <h4 class='text-center'>Nearest Contact</h4>
-                </div>
-                <div class='panel-body'>
-                    <?php
-                        $query = " SELECT nearest_contact1, nearest_contact2, nearest_contact3 FROM students ";
-                        $run_query = mysqli_query($connection, $query);
-                    
-                        if(mysqli_num_rows($run_query) > 0){
-                            $i = 0;
-                            while($result = mysqli_fetch_assoc($run_query)){
-                                $i++;
-                                $nearest_contact1 = $result['nearest_contact1'];
-                                $nearest_contact2 = $result['nearest_contact2'];
-                                $nearest_contact3 = $result['nearest_contact3'];
-                                
-                                echo "
-                                    <p class='text-center'>
-                                        <b>
-                                            {$nearest_contact1}
-                                            {$nearest_contact2}
-                                            {$nearest_contact3}
-                                        </b>
-                                    </p>
-                                ";
-                            }
+
+            <?php
+                if(isset($_POST['generate_teachers_contact_btn'])){
+
+                    $query = " SELECT phone FROM teachers ";
+                    $run_query = mysqli_query($connection, $query);
+            
+                    if(mysqli_num_rows($run_query) > 0){
+                        $i = 0;
+                        while($result = mysqli_fetch_assoc($run_query)){
+                            $i++;
+                            $teachers_contacts = $result['phone'];
+                            
+                            echo "{$teachers_contacts}, ";
                         }
-                    ?>
-                </div>
-            </div>
+                    }                        
+                }
+            ?>
+
         </div>
     </div>
 </div>
