@@ -2,6 +2,7 @@
 New Version of School Management Software with more Modules -- Built with  PHP
 
 <img src="/portal.PNG" />
+<img src="/features.PNG" />
 
 ### Features of School Portal Kit
 1. Student Registration with Unique Reg number
