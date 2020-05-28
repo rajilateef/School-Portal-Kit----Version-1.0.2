@@ -234,9 +234,9 @@
                                                 <th>S/N</th>
                                                 <th>NAMES</th>
                                                 <th>REG NO</th>
-                                                <th>1ST CA</th>
-                                                <th>2ND CA</th>
-                                                <th>EXAM</th>
+                                                <th>CAT (15)</th>
+                                                <th>ASSIGN (25)</th>
+                                                <th>EXAM (60)</th>
                                             </tr>
                                         </thead>
                                         <tbody>

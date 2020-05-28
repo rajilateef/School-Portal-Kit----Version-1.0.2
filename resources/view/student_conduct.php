@@ -194,7 +194,7 @@
                             </div>
 
                             <div class='col-md-1 col-sm-1 col-xs-1'>
-                                <h6>Hand Writing</h6>
+                                <h6>Neatness</h6>
                             </div>
 
                             <div class='col-md-1 col-sm-1 col-xs-1'>
@@ -210,7 +210,7 @@
                             </div>
                             
                             <div class='col-md-1 col-sm-1 col-xs-1'>
-                                <h6>Attitude to work</h6>
+                                <h6>Punctuality</h6>
                             </div>
                             
                             <div class='col-md-1 col-sm-1 col-xs-1'>
@@ -218,7 +218,7 @@
                             </div>
                             
                             <div class='col-md-1 col-sm-1 col-xs-1'>
-                                <h6>Politeness</h6>
+                                <h6>Behavior</h6>
                             </div>
                         </div>
 
